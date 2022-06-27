@@ -1,0 +1,19 @@
+hr {
+    margin-top: 16px;
+    margin-bottom: 0px;
+    height: 3px;color: var(--bs-yellow);
+    background: var(--bs-white);
+    border-style: solid;
+    border-color: var(--bs-white);
+}
+
+/* .btn-primary {
+    text-align:center;
+    margin:0px;
+    padding:6px 17px;
+    margin-left:0px;
+    margin-top:10px;
+    margin-right:0px;
+    width:125px;
+    margin-bottom: 0px;
+} */

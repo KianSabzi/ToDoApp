@@ -1,0 +1,23 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "this is first version of ToDo Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "MKSabzi",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/sortablejs": "^1.10.7",
+    "electron": "^17.1.0"
+  },
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1",
+    "interactjs": "^1.10.11",
+    "jquery-slim": "^3.0.0",
+    "nunjucks": "^3.2.3",
+    "reload": "^3.2.0",
+    "sortablejs": "^1.15.0"
+  }
+}

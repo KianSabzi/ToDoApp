@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/font-face.css"> -->
+    <style>
+        @font-face {
+            font-family: Vazir;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/font-face.css");
+        }
+
+        /* .draggable {
+            width: 25%;
+            min-height: 6.5em;
+            margin: 1rem 0 0 1rem;
+            background-color: #29e;
+            color: white;
+            border-radius: 0.75em;
+            padding: 4%;
+            touch-action: none;
+            user-select: none;
+        } */
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-pax4MlgXjHEPfCwcJLQhigY7+N8rt6bVvWLFyUMuxShv170X53TRzGPmPkZmGBhk+jikR8WBM4yl7A9WMHHqvg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do Application by MKSabzi</title>
+</head>
+
+<body style="font-family: Vazir; -webkit-app-region: drag;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img class="rounded-circle w-100" style="margin-top: 10px" src="assets\img\Avatar.png" alt="">
+                        <!-- <div class="card"
+                            style="margin-top: 10px;margin-bottom: -10px;margin-left: 2px;margin-right: 0px;"><img
+                                class="card-img-top w-100 d-block" src="assets\img\Avatar.png">
+                            <div class="card-body">
+                                <h4 class="card-title"
+                                    style="font-family: Vazirmatn;font-size: 13.7px;text-align: center;">تنظیمات</h4>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col">
+                        <p style="margin-bottom: 0px;margin-top: 20px;width: auto;height: auto;">
+                            مرتضی سبزی</p>
+                    </div>
+                </div>
+
+                <hr>
+                <input type="search" class="form-control my-1" placeholder="جستجو" />
+
+                <hr>
+                <button class="btn btn-secondary" type="button">همه کارها</button>
+                <button class="btn btn-primary mt-1" type="button">نشان دارها</button>
+                <button class="btn btn-danger mt-1" type="button">کارهای فوری</button>
+
+                <hr>
+                <!-- در این قسمت دسته بندی های جدید که کاربر خود ایجاد می کند قرار خواهد گرفت-->
+                <a href="#newCategory" data-toggle="collapse" class="">دسته بندی جدید</a>
+                <form action="">
+                    <input id="newCategory" type="text" class="form-control my-1 collapse"
+                        placeholder="نام دسته بندی جدید" />
+                    <input hidden type="submit" id="saveCategory" value="">
+                </form>
+
+            </div>
+            <div id="simpleList" class="col mx-4">
+
+                <!--This section load dynamically after API integrate to UI -->
+
+                <div class="row">
+                    <div class="col-md-9 mt-2">
+                        <!-- <i class="fa fa-plus ml-2"></i> -->
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                            data-bs-target="#newTask">اضافه کردن تسک جدید</button>
+                    </div>
+                </div>
+                <form action="" class="card mt-2 collapse" id="newTask">
+                    <div class="form-group">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <input type="text" id="taskTitle" placeholder="عنوان وظیفه را وارد کنید"
+                                        class="form-control" autofocus />
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="col-md-11">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="dropdown">
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                اولویت اجرا
+                                            </a>
+
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                {% for categories in cats %>
+                                                <li><a class="dropdown-item" href="#">{{categories.name}}</a></li>
+                                                <!-- <li><a class="dropdown-item" href="#">معمولی</a></li>
+                                                <li><a class="dropdown-item" href="#">فوری</a></li> -->
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="dropdown">
+                                            <a class="btn btn-primary dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                دسته بندی
+                                            </a>
+
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="#">1</a></li>
+                                                <li><a class="dropdown-item" href="#">2</a></li>
+                                                <li><a class="dropdown-item" href="#">3</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button type="submit" class="btn btn-success" data-toggle="collapse"
+                                            data-target="#newTask">ذخیره</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </form>
+
+                <div id="tasks">
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+    <script src="index.js">
+    </script>
+
+
+</body>
+
+</html>
