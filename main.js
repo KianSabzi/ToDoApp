@@ -1,5 +1,6 @@
 const {
   app,
+  BrowserView,
   BrowserWindow,
   Menu,
   MenuItem,
