@@ -22,6 +22,8 @@ require("nunjucks");
 //   }).show();
 // }
 
+function newWindow() {}
+
 let mainWindow;
 
 function createWindow() {
@@ -58,7 +60,11 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  createWindow(), showNotification();
+  createWindow();
+  const view = new BrowserView();
+  mainWindow.setBrowserView(view);
+  view.setBounds({ x: 20, y: 20, width: 400, height: 400 });
+  view.webContents.loadURL("https://varzesh3.com");
   const ctxMenu = new Menu();
   ctxMenu.append(
     new MenuItem({
@@ -68,10 +74,8 @@ app.whenReady().then(() => {
       },
     })
   );
-  ctxMenu.append(
-    new MenuItem({ role: "selectall" }),
-    new MenuItem({ role: "inspect" })
-  );
+  ctxMenu.append(new MenuItem({ role: "selectall" }));
+  ctxMenu.append(new MenuItem({ role: "toggleDevTools" }));
   mainWindow.webContents.on("context-menu", function (e, params) {
     ctxMenu.popup(mainWindow, params.x, params.y);
   });
